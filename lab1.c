@@ -19,11 +19,13 @@ int main(int argc, char* argv[]) {
     double key, X, intergal_part;
     int j, k, z, min_s;
     unsigned int seed;
+    unsigned int seed1;
     unsigned int* restrict seedp = &seed;
-    unsigned int* restrict seedp1 = &seed;
-    for (i=0; i<100; ++i) { /* 100 экспериментов */
-        srand(i); /* инициализировать начальное значение ГСЧ */
+    unsigned int* restrict seedp1 = &seed1;
+    for (i=0; i < 100; ++i) { /* 100 экспериментов */
+        /* инициализировать начальное значение ГСЧ */
         seed = i;
+        seed1 = i;
         /* Заполнить массив исходных данных размером N */
         // GENERATE
         for(j=0; j < N; ++j) {
