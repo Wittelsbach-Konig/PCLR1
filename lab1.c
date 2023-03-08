@@ -12,20 +12,19 @@ int main(int argc, char* argv[]) {
     N = atoi(argv[1]); /* N равен первому параметру командной строки */
     gettimeofday(&T1, NULL); /* запомнить текущее время T1 */
     int N2 = N/2; /* N2 равен N/2*/
-    double M1[N], M2[N2]; /* Массивы M1 разм N и M2 разм N2*/
+    double* restrict M1 = (double*) malloc(N * sizeof(double)); 
+    double* restrict M2 = (double*) malloc(N2 * sizeof(double)); /* Массивы M1 разм N и M2 разм N2*/
     double M2_old[N2];
     double A = 490.0; /* Ф*И*О */
     double min = 1; double max = A; double max_2 = max * 10;
     double key, X, intergal_part;
     int j, k, z, min_s;
     unsigned int seed;
-    unsigned int seed1;
     unsigned int* restrict seedp = &seed;
-    unsigned int* restrict seedp1 = &seed1;
+    unsigned int* restrict seedp1 = &seed;
     for (i=0; i < 100; ++i) { /* 100 экспериментов */
         /* инициализировать начальное значение ГСЧ */
         seed = i;
-        seed1 = i;
         /* Заполнить массив исходных данных размером N */
         // GENERATE
         for(j=0; j < N; ++j) {
@@ -85,8 +84,8 @@ int main(int argc, char* argv[]) {
                 X= X + sin(M2[k]);
             }
         }
-        printf("X = %f", X);
-        printf("\n\n");
+        //printf("X = %f", X);
+        //printf("\n\n");
         /* Решить поставленную задачу, заполнить массив с результатами*/
         /* Отсортировать массив с результатами указанным методом */
     }

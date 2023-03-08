@@ -1,6 +1,8 @@
 # Prerequisites
 *.d
 #
+lab1-par-*
+lab1-seq
 *.vscode
 # Object files
 *.o
